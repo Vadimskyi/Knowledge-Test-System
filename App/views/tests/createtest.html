@@ -1,0 +1,141 @@
+﻿<section id="test-view" class="view createtest_view">
+    <h3 class="page-title" data-bind="text: title"></h3>
+    <div class="save-cancel-button-bar">
+        <button class="button-cancel"
+            data-bind="click: goBack, enable: canSave">Cancel</button>
+        <button class="btn-upload button-save"
+                data-bind="click: save, enable: canSave">Save</button>
+    </div>
+    <div class="create-view">
+        <div class="create-description row-fluid" data-bind="with: test">
+            <div class="span3">
+                <div class="field form-group" data-bind="validationElement: name">
+                    <label class="control-label" for="name">Test Name</label>
+                    <input class="form-control" type="text" data-bind="value: name" placeholder="Title" />
+                </div>
+
+                <div class="field" data-bind="validationElement: tags">
+                    <label class="control-label" for="tags">Tags:</label>
+                    <input class="form-control" type="text" data-bind="value: tags"
+                        placeholder="Tags" />
+                </div>
+            </div>
+            <div class="span3">
+                <div class="field">
+                    <label class="control-label">Time Limit:</label>
+                    <input class="form-control" type="text" data-bind="value: $parent.testRestriction.timeLimit"
+                        placeholder="In minutes" />
+                </div>
+                <div class="field">
+                    <label class="control-label">Attempts Number:</label>
+                    <input class="form-control" type="text" data-bind="value: $parent.testRestriction.attemptsNumber"
+                        placeholder="AttemptsNumber" />
+                </div>
+            </div>
+            <div class="span4">
+                    <div class="field">
+                        <label>Description</label>
+                        <textarea data-bind="value: description"
+                            placeholder="Enter description"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Is private?</label>
+                        <input type="checkbox" data-bind="cheked: $parent.testRestriction.isPrivate" placeholder="Is Private" />
+                    </div>
+            </div>
+        </div>
+        <br />
+        <form class="upload" enctype="multipart/form-data">
+        <!-- ko foreach: questions -->
+            <div class="create-question row-fluid">
+                <div class="remove-btn">
+                    <button class="btn-mini btn-danger"
+                            data-bind="click: $parent.removeQuestion, enable: $root.canSave"><i class="icon-remove"></i> Remove Question</button>
+                </div>
+                <div class="span3 field">
+                    <div class="field">
+                        <label>Question Text:</label>
+                        <input data-bind="value: questionText"
+                            placeholder="In minutes" />
+                    </div>
+                </div>
+                <div class="span4 field">
+                    <div class="field">
+                        <label>Question Type:</label>
+                        <select data-bind="options: $parent.questionTypes, value: questionType, optionsText: 'description', optionsCaption: 'Select question type ...', enable: !answers().length"
+                            placeholder="In minutes"> </select>
+                    </div>
+                </div>
+                <div class="span3 field">
+                    <div class="field">
+                        <label>Picture:</label>
+                        <input data-bind="attr: { id: id() }, event: { change: function () { $root.setImageSource($element.files[0], $data) } }" class="browse" name="file" type="file" accept="image/jpeg,image/png,image/gif" />
+                        <!--<input type="text" id="filename" readonly="true"/> 
+                        <input class="browse" type="file" id="browse" name="fileupload" accept="image/jpeg,image/png,image/gif" style="display: none" onChange="Handlechange();"/>
+                        <button type="button" class="btn-small btn-success" id="fakeBrowse" onclick="HandleBrowseClick();" >Browse</button>-->
+                    </div>
+                </div>
+
+                <div class="span10">
+                    <div data-bind="if: answers().length">
+                        <!-- ko if: questionType().key == 1 || questionType().key == 2 -->  <!-- один ответ на вопрос --> <!-- несколько ответов на вопрос -->
+                            <!-- ko foreach: answers -->
+                                <div class="create-answers row-fluid">
+                                    <div class="span4 field">
+                                        <label>Answer Text:</label>
+                                        <input data-bind="value: answerText"
+                                            placeholder="Answer Text" />
+                                    </div>
+
+                                    <!-- ko if: $parent.questionType().key == 1 -->
+                                        <div class="span3 field">
+                                            <label>Is Correct Answer?:</label>
+                                            <input type="radio"  name="qwe" data-bind="attr: {name: $parent.id(), value: id()}, checked: $parent.checked, uniqueName: false "
+                                                placeholder="Answer Text" />
+                                        </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: $parent.questionType().key == 2 -->
+                                        <div class="span3 field">
+                                            <label>Is Correct Answer?:</label>
+                                            <input type="checkbox" name="qwe" data-bind="attr: { name: $parent.id() }, checked: isCorrectAnswer, uniqueName: false"
+                                                placeholder="Answer Text" />
+                                        </div>
+                                    <!-- /ko -->
+                                    <div class="span2 remove">
+                                        <button class="btn-mini btn-danger"
+                                            data-bind="click: $parent.removeAnswer, enable: $root.canSave"><i class="icon-remove"></i> Remove Answer</button>
+                                    </div>
+
+                                </div>
+                            <!-- /ko -->
+                        <!-- /ko -->
+
+                        <!-- ko if: questionType().key == 3 -->   <!-- ввести ответ на вопрос -->
+                            <div class="create-answers row-fluid" data-bind="with: answers()[0]">
+                                <div class="span8">
+                                    <label>Correct Answer:</label>
+                                    <input data-bind="value: answerText"
+                                        placeholder="Answer Text" />
+                                </div>
+                                <div class="span2 remove">
+                                    <button class="btn-mini btn-danger"
+                                        data-bind="click: $parent.removeAnswer, enable: $root.canSave"><i class="icon-remove"></i> Remove Answer</button>
+                                </div>
+                            </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- ko if: questionType -->
+                        <button class="custom-btn-small"
+                            data-bind="click: $parent.addAnswer, enable: $root.canSave"><i class="icon-plus"></i> Create answer</button>
+                        <!-- /ko -->
+                    <!-- ko if: !questionType -->
+                    ...
+                    <!-- /ko -->
+                </div>
+            </div>
+        <!-- /ko -->
+        </form>
+        <button class="custom-btn"
+            data-bind="click: addQuestion, enable: $root.canSave"><i class="icon-plus"></i> Create question</button>
+    </div>
+</section>

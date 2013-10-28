@@ -1,0 +1,64 @@
+﻿<section id="test-view" class="view testing_view">
+    <div class="testing_details">
+        <div class="">
+            <div class="timer">
+             <div class="clock" data-bind="text: formatedTime">
+             </div>
+           <br />
+            <button class="custom-btn testing-btn"
+                data-bind="click: goBack">
+                <i class="icon-hand-left"></i> Back</button>
+            <button class="custom-btn submitTest testing-btn"
+                data-bind="click: submitTest">
+                <i class="icon-check"></i> Submit Test</button>
+        </div>
+        </div>
+    </div>
+    <div data-bind="foreach: questions" class="questions_view">
+        
+        <div class="questions">
+            <div class="question selected" data-bind="click: $parent.goToQuestion">
+                <div class="details-left">
+                    <a class="qImages" data-bind="visible: imageName, attr: { href: imageName, title: questionText }">
+                        <img src="" class="question_image img-polaroid" data-bind="attr: { src: imageName }" /></a>
+                </div>
+                <div class="">
+                    <span class="question_text" data-bind="text: questionText"></span>
+                </div>
+            </div>
+            <div class="description row-fluid" data-bind=""><em class="span10" data-bind="text: '  - ' + questionType.description()"></em><!--<div title="green - answered question, red - not." class="indicator span1"></div>--></div>
+            
+                <!-- ko if: questionType.key() == 1 --> <!-- один ответ на вопрос -->
+                <div class="answers visible" data-bind="foreach: answers">
+                    <br />
+                    <div class="answer">
+                        <input type="radio" name="answ" data-bind="attr: { value: id, name: $parent.id }, checked: $parent.checkedAnswer" />
+                        <adress data-bind="text: answerText"></adress>
+                        <br />
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: questionType.key() == 2 --> <!-- несколько ответов на вопрос -->
+                <div class="answers visible" data-bind="foreach: answers">
+                    <br />
+                    <div class="answer">
+                        <input type="checkbox" name="answ" data-bind="checked: checked" />
+                        <adress data-bind="text: answerText"></adress>
+                        <br />
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: questionType.key() == 3 --> <!-- ввести ответ на вопрос -->
+                <div class="answers visible" data-bind="with: answers">
+                    <br />
+                    <div class="answer">
+                        <input type="text" name="answ" data-bind="value: $parent.chosenAnswers" />
+                        <br />
+                    </div>
+                </div>
+                <!-- /ko -->
+            
+        </div>
+    </div>
+    <br />
+</section>

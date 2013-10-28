@@ -1,0 +1,37 @@
+﻿<div class="row login-view">
+    <div class="col-lg-6">
+    </div>
+        <form>
+           <div class="details-left">
+                <div class="form-group" data-bind="validationElement: username">
+                   <label class="control-label" for="username">Username</label>
+                   <input class="form-control" type="text"  data-bind="value: username" placeholder="User name">                       
+                </div>
+                <div class="form-group" data-bind="validationElement: password">
+                    <label class="control-label" for="email">Password</label>
+                    <input class="form-control" type="password"  data-bind="value: password" placeholder="Password">                        
+                </div>  
+                <div class="checkbox">
+                    <p><input type="checkbox" data-bind="value: rememberMe">&nbsp;&nbsp;&nbsp;&nbsp;Remember me</p>                    
+                </div>   
+               <br />                                                                                                  
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary" data-bind="click: login">Sign in</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                    <p class="mart5">Don't have Account?  </p>
+                    <a class="btn btn-primary register-btn" href="/#/register">Register</a>
+                </div>
+            </div>                   
+        </form>                      
+    </div>
+    
+    <div class="col-offset-1 col-lg-5 external-view">
+        <h3>Login using another service</h3>
+        <div class="list-group" data-bind="foreach: appsecurity.externalLogins">                        
+            <a class="list-group-item lead" href="#"  data-bind="click: function (data, event) { $parent.externalLogin($parent, data, event) }, attr: { 'data-provider': Provider }">
+                <i data-bind="css: $parent.socialIcon($data)"></i>
+                <span data-bind="text: ProviderDisplayName"></span>
+            </a>
+        </div>
+    </div>    
+</div>

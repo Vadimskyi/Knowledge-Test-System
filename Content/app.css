@@ -1,0 +1,600 @@
+﻿
+
+/* knockout Validation */
+
+.validationMessage {
+	display: block;
+}
+
+/* Durandal */
+
+.splash {
+	text-align: center;
+	margin: 10% 0 0 0;
+}
+
+.splash .message {
+	font-size: 5em;
+	line-height: 1.5em;
+	-webkit-text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+	text-transform: uppercase;
+}
+
+.splash .icon-spinner {
+	text-align: center;
+	display: inline-block;
+	font-size: 5em;
+	margin-top: 50px;
+}
+
+.page-host {
+	position: relative;
+	padding-top: 80px;
+}
+
+.loader {
+	margin: 6px 8px 4px 8px;
+	visibility: hidden;
+}
+
+.loader.active {
+	visibility: visible;
+}
+
+footer {
+	background-color:#000;
+	color : #999;    
+    display:none;
+}
+
+.footer-content {
+	padding : 3%;
+	color : #999;
+}
+	  
+footer li {
+	line-height : 2em
+}
+
+footer li a {
+	font-size : 1.5em;    
+}
+
+footer a {
+	color : #ccc;    
+}
+
+footer a:hover {
+	color : #FFF;        
+}
+
+
+/* Bootstrap overrides */
+
+.navbar-fixed-top .navbar-inner {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.navbar-fixed-top .icon-home {
+	font-size: 18px
+}
+
+.label {
+	font-size : 1em !important;
+}
+
+/* Media queries */
+
+@media (max-width: 979px) {
+	.navbar-fixed-top {
+		margin-bottom: 0;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.page-host {
+		padding-left : 10px;
+		padding-right : 10px;
+	}
+
+	.brand {
+		margin-left : 10px !important;
+	}
+}
+
+
+/* Helpers */
+
+.mart5 {
+	margin-top : 5%;
+}
+
+
+/*   */
+button
+{
+}
+
+.nav-stacked > li > button {
+  margin-right: 0;
+}
+
+.nav > li > button {
+  display: block;
+}
+
+
+.nav > li > button > img {
+  max-width: none;
+}
+
+.nav-tabs > li > button,
+.nav-pills > li > button {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px;
+}
+
+.nav-pills > li > button {
+  width:100%;
+  color:#ffffff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.nav-pills > .active > button,
+.nav-pills > .active > button:hover,
+.nav-pills > .active > button:focus {
+  color: #ffffff;
+  background-color: #0088cc;
+}
+
+.nav-pills.nav-stacked > li > button {
+  margin-bottom: 3px;
+}
+
+.nav-pills.nav-stacked > li:last-child > button {
+  margin-bottom: 1px;
+}
+
+.nav > li > button:hover,
+.nav > li > button:focus {
+  text-decoration: none;
+  color: #0088cc;
+  background-color: #FFF;
+}
+
+.icon-white,
+.nav-pills > .active > button > [class^="icon-"],
+.nav-pills > .active > button > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:focus > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > li > a:focus > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:focus > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"],
+.dropdown-submenu:focus > a > [class*=" icon-"] {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+.create-view
+{
+    padding-top: 10px;
+    color: white;
+}
+
+.create-description
+{ 
+    background-color: #25425C;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom:20px;
+    margin-top: 10px;
+    border-bottom:solid 3px gray;
+}
+
+.create-description > div
+{
+   
+    margin-right:20px;
+}
+
+.field > input
+{
+    width:auto;
+}
+
+.create-question
+{
+    /*padding: 5px;
+    border: solid 2px #c3c1c1;*/
+}
+
+.create-question:hover
+{
+    background-color: #25425C;
+}
+
+.create-question > .field
+{
+    margin-right:20px;
+    padding-left: 5px;
+    border-left: dotted 1px gray;
+    height: 90px;
+}
+
+.remove-btn
+{
+    display:block;
+    margin-bottom: 5px;
+}
+
+#filename
+{
+    min-width:60px;
+}
+
+.create-answers
+{
+    margin-left: 10%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    border-left: dotted 1px gray;
+    border-top: dashed 1px gray;
+}
+
+.create-answers > .remove
+{
+    margin-top: 10px;
+}
+
+.question_image
+{
+    max-height: 100px;
+    max-width: 150px;
+}
+
+.test_owner_image
+{
+    max-height: 100px;
+    max-width: 88px;
+}
+
+.hidden
+{
+    display:none;
+}
+
+/* took from .less styles*/
+
+/*.session-brief{
+     font-family:"Segoe UI Light","Segoe Light","Segoe UI","Helvetica-Light",Arial,Helvetica,sans-serif;
+}
+
+.session-brief > h1
+{
+    text-decoration:underline
+}*/
+
+.session-brief > h1, address, span{
+
+    color: white;
+   
+}
+
+.session-brief > span{
+    line-height: 25px;
+}
+
+.details-left > div > label
+{
+    color: white;
+}
+
+.details-right > div > label
+{
+    color: white;
+}
+
+.titleblock > div > label
+{
+    color: white;
+}
+
+.custom-btn
+{
+    padding: 4px 30px 8px 30px;
+}
+
+.custom-btn-small
+{
+    padding: 2px 15px 4px 15px;
+    font-size: 70%
+}
+
+.table-fluid
+{
+    background-color:#25425C;
+}
+
+.table-fluid > tbody
+{
+    color:black;
+}
+
+.account-view
+{
+    color: white;
+    padding-top: 200px;
+}
+
+.login-view
+{
+    color:white;
+    position: fixed;
+    top: 200px;
+    left: 150px;
+}
+
+.external-view
+{
+    color:white;
+}
+
+a:visited
+{
+    color:white;
+}
+
+.checkbox > p > input[type="checkbox"]
+{
+    float:none;
+    width:15px;
+}
+
+.register-btn
+{
+    font-weight: bold;
+    width: 70px;
+    float: right;
+}
+
+.form-group > label
+{
+    clear:none;
+    width: 200px;
+}
+
+.question
+{
+    font-size: 22px; 
+    display: list-item; 
+    padding: 0.5em 1.5em; 
+    cursor: pointer; 
+    color: #444; 
+    text-shadow: #f7f7f7 0 1px 1px; 
+    border-top: 1px solid #ddd; 
+    border-bottom: 1px solid #888; 
+}
+
+.selected { 
+    background-color: #444 !important; 
+    color: white; 
+    text-shadow:none; 
+    border-right-color: #aaa; 
+    border-left: none; 
+    box-shadow:inset 1px 2px 6px #070707; 
+}
+
+.visible
+{
+    background-color: #a9c1ce !important;
+    color: black;
+    border: solid 1px black;
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    font-size: 16px;
+}
+
+.selected > div > .question_text
+{
+    color: white;
+}
+
+.question_text
+{
+    color: #444; 
+    font-weight: 900; 
+}
+
+.answers
+{
+    padding: 10px;
+    width: 90%;
+    border-left: solid 5px #444;
+    border-bottom: solid 5px #444;
+    border-right: solid 2px #444;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.clock
+{
+    color: white;
+}
+
+.filter-box
+{
+    font-size: 100%;
+}
+
+.fixed
+{
+    position:fixed;
+    width: 85%;
+    background-color:#194D7B;
+    z-index: 1050;
+}
+
+.filter_nav
+{
+    position:fixed;
+    top: 300px;
+}
+
+.filter-box-container
+{
+    position:fixed;
+    top: 250px;
+    z-index: 1051;
+    font-size: 14px;
+}
+
+.main-tests
+{
+    padding-top:200px;
+}
+
+.super_main
+{
+    position:fixed;
+    background-color:#194D7B;
+    width: 100%;
+    height: 200px;
+    margin: -60px 0px -100px 0px;
+}
+
+.testdetails_view
+{
+    padding-top: 200px;
+}
+
+.testing_view
+{
+    padding-top: 200px;
+}
+
+.testing_details
+{
+    position: fixed;
+    right: 180px;
+}
+
+.testing-btn
+{
+    display: block;
+    width: 180px;
+    margin-top: 10px;
+}
+
+.questions_view
+{
+    margin-right: 200px;
+}
+
+.createtest_view
+{
+    padding-top: 200px;
+}
+
+.register_view
+{
+    padding-top: 200px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .filter_nav {
+        position:relative;
+        float: none;
+		margin: 0 0 7% 0;
+		width: 100%;
+        top: 0px;
+    }
+
+
+    .filter-box-container{
+        position:relative;
+        top: 0px;
+    }
+
+    .fixed{
+        position:relative;
+        width: 100%;
+    }
+
+    .super_main{
+        display:none;
+    }
+
+    .main-tests{
+        padding-top: 0;
+    }
+
+    .login-view{
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+
+    .testdetails_view{
+        padding-top: 0px;
+    }
+
+    .testing_view
+    {
+        padding-top: 0px;
+    }
+
+     .questions_view
+    {
+        margin-right: 0px;
+    }
+
+    .testing_details
+    {
+        position: relative;
+        right: 0px;
+        padding-bottom: 20px;
+    }
+
+    .testing-btn
+    {
+        display: inline-block;
+        width: 180px;
+    }
+
+    .createtest_view
+    {
+        padding-top: 0px;
+    }
+
+    .register_view
+    {
+        padding-top: 0px;
+    }
+
+    .account-view
+    {
+        padding-top: 0px;
+    }
+}

@@ -1,0 +1,33 @@
+﻿<section class="view">
+    <nav class="filter_nav">
+        
+        <div class="filter-box-container">
+    
+            <input class="filter-box"
+                   data-bind="value: testFilter.searchText, valueUpdate: 'afterkeydown', escape: clearFilter"
+                   placeholder="filter by tags or test-name"  />
+    
+            <a class="clear-text" data-bind="click: clearFilter" title="Clear"></a>
+
+        </div>
+        <br />
+        <select id="owner" data-bind="options: owners, value: testFilter.owner, optionsText: 'fullName', optionsCaption: 'All' ">
+        </select>
+
+        <button class="clear-trash" data-bind="click: clearAllFilters">Clear Filters</button>
+
+    </nav>
+    
+
+    <section data-bind="foreach: tests" class="view-list main-tests">
+        <article class="article-right-content">
+            <div class="session-brief" title="Go to test details">
+                <img class="test_owner_image" data-bind="attr: { src: owner().imageName }"/>
+                <h1  data-bind="text: name"></h1>
+                <span data-bind="text: description"></span>
+                <small class="right" data-bind="text: tagsFormatted"></small>
+                <address data-bind="text: owner().fullName"></address>
+            </div>
+        </article>
+    </section>
+    </section>

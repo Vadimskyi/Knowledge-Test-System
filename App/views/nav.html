@@ -1,0 +1,41 @@
+﻿<div id="busyindicator">
+    <div data-bind="css: { active: router.isNavigating }"
+            class="pull-right loader">
+            <i class="icon-spinner icon-2x icon-spin"></i>
+        </div>
+</div>
+<h1>Knowledge Test System</h1>
+<nav class="main-nav">
+            <ul>
+            <!-- ko foreach: router.visibleRoutes -->
+            <li class="route-top">
+                <a data-bind="attr: { href: hash },
+                    css: { active: isActive },
+                    html: caption"></a>
+            </li>
+            <!-- /ko -->
+
+            <li class="route-top">
+                 <ul class="pull-right" data-bind="with: appsecurity.user">
+                    <li class="route-top" data-bind="if: !IsAuthenticated">                    
+                        <a href="/#/login"><i class="icon-user"></i>&nbsp; Login</a>
+                    </li>
+                    <li class="dropdown route-top" data-bind="if: IsAuthenticated">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">                        
+                            <i class="icon-user"></i>&nbsp; Hi <span data-bind="    text: UserName"></span>
+                            <b class="caret"></b>
+                       </a>                                
+                       <ul class="dropdown-menu">
+                            <li><a href="/#/" data-bind="attr: { href: $root.goToAccount }">Manage Profile</a></li>
+                            <!-- ko if: $root.appsecurity.isUserInRole(['Administrator'])-->
+                            <li class="divider"></li>
+                           <li><a href="/#/users" >Manage Users</a></li>
+                           <!-- /ko -->
+                            <li class="divider"></li>
+                            <li><a href="/#/" data-bind="click: $parent.logout">Logout</a></li>
+                        </ul>
+                    </li>                    
+                </ul> 
+            </li>
+        </ul>
+</nav>

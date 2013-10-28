@@ -1,0 +1,67 @@
+﻿<div style="height: 40px;"></div>
+<div class="container account-view">
+    <div class="row">
+        <div class="span3">
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: { active: showUserInfo }">
+                    <button data-bind="click: function (data, event) { clickHandler('userinfo'); }">User Info</button></li>
+                <li data-bind="css: { active: showMytests }">
+                    <button data-bind="click: function (data, event) { clickHandler('mytests'); }">My Tests</button></li>
+            </ul>
+        </div>
+        <div class="span6">
+            <div class="details-right">
+                <div data-bind="with: userInfo">
+                    <!-- ko if: $parent.showUserInfo -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="span2">
+                                <img alt="" class="img-polaroid" data-bind="attr: { src: imageName }">
+                            </div>
+                            <div class="span4">
+                                <blockquote>
+                                    <p data-bind="text: fullName"></p>
+                                    <small><cite title="Source Title" data-bind="text: bio"> <i class="icon-map-marker"></i></cite></small>
+                                </blockquote>
+                                <br /
+                                <p>
+                                    <i class="icon-envelope"></i> <span data-bind="text: email"></span>
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: $parent.showMytests -->
+                    <div class="container">
+                        <!-- ko if: statistics().length > 0 -->
+                            <table class="table-fluid">
+                                <thead>  
+                                    <tr>  
+                                        <th>Test </th>  
+                                        <th>StartDate</th>  
+                                        <th>EndDate</th>  
+                                        <th>Progress</th>  
+                                        <th></th>  
+                                    </tr>  
+                                </thead>  
+                                <tbody data-bind="foreach: statistics">  
+                                    <tr>  
+                                        <td data-bind="text: test().name"></td>  
+                                        <td data-bind="text: startDate"></td>  
+                                        <td data-bind="text: endDate"></td>  
+                                        <td data-bind="text: progress"></td>  
+                                        <td><div data-bind="with: test"><button class="custom-btn"
+                                                    data-bind="click: $root.goToDetails">View Details</button>
+                                            </div>
+                                        </td> 
+                                    </tr>   
+                                </tbody>
+                            </table>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

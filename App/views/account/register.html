@@ -1,0 +1,37 @@
+﻿<div class="row register_view">
+    <div class="col-offset-3 col-lg-6">        
+            <form data-bind="submit: register">
+                <div class="details-left panel">
+                    <div class="form-group" data-bind="validationElement: username">
+                         <label class="control-label" for="username">Username</label>                        
+                         <input class="form-control" type="text"  data-bind="value: username" placeholder="User name">      
+                    </div>
+                    <div class="form-group" data-bind="validationElement: firstName">
+                         <label class="control-label" for="username">First Name</label>                        
+                         <input class="form-control" type="text"  data-bind="value: firstName" placeholder="First name">      
+                    </div>
+                    <div class="form-group" data-bind="validationElement: lastName">
+                         <label class="control-label" for="username">Last Name</label>                        
+                         <input class="form-control" type="text"  data-bind="value: lastName" placeholder="Last name">      
+                    </div>
+                    <div class="form-group" data-bind="validationElement: email">
+                         <label class="control-label" for="username">Email</label>                     
+                         <input class="form-control" type="text"  data-bind="value: email" placeholder="Email"> 
+                    </div>                   
+                    <div class="form-group" data-bind="validationElement: password">
+                         <label class="control-label" for="email">Password</label>
+                         <input class="form-control" type="password"  data-bind="value: password" placeholder="Password">  
+                    </div>  
+                    <div class="form-group" data-bind="validationElement: confirmpassword">
+                         <label class="control-label" for="email">ConfirmPassword</label>
+                         <input class="form-control" type="password"  data-bind="value: confirmpassword" placeholder="Confirm Password">  
+                    </div>  
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
+                    </div>    
+                </div>                    
+            </form>                      
+       </div>          
+  </div>
+ 

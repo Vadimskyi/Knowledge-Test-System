@@ -1,0 +1,43 @@
+﻿<section id="test-view" class="view testdetails_view">
+    <h3 class="page-title" data-bind="text: title"></h3>
+    <button class="button-back" data-bind="click: goBack"></button>
+    <div class="save-cancel-button-bar">
+        <button class="custom-btn"
+            data-bind="click: takeTest, disable: testIsTaken">
+            <i class="icon-plus"></i> Take test</button>
+        <button class="custom-btn"
+            data-bind="click: startTest, enable: testIsTaken">
+            <i class="icon-trophy"></i> Start test</button>
+    </div>
+
+    <div data-bind="with: test">
+        <div class="titleblock">
+            <h1 id="title" data-bind="text: name"></h1>
+        </div>
+        <div class="details-left">
+            <div>
+                <label>Tags</label>
+                <address data-bind="text: tagsFormatted"></address>
+            </div>
+            <div>
+                <label>Time</label>
+                <address data-bind="text: restriction().timeLimitFormated"></address>
+            </div>
+            <div>
+                <label>Attempts</label>
+                <address data-bind="text: restriction().attemptsNumber"></address>
+            </div>
+            <div>
+                <label>Creator:</label>
+                <address data-bind="text: owner().fullName"></address>
+                <img data-bind="attr: { src: owner().imageName }" />
+            </div>
+        </div>
+        <div class="details-right">
+            <div>
+                <label>Description</label>
+                <span class="scrollable-text" data-bind="text: description" ></span>
+            </div>
+        </div>
+    </div>
+</section>
