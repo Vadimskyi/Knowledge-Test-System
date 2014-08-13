@@ -17,7 +17,7 @@
 
 
 using StructureMap;
-namespace JumpStartTest.DependencyResolution {
+namespace TestApplication.DependencyResolution {
     public static class IoC {
         public static IContainer Initialize() {
             ObjectFactory.Initialize(x =>

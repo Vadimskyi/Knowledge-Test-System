@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Objects.DataClasses;
 
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class EFDbContext : DbContext
     {
@@ -25,13 +25,6 @@ namespace JumpStartTest
             modelBuilder.Entity<Question>().HasRequired(q => q.QuestionType).WithMany(t => t.Questions).HasForeignKey(k => k.QuestionTypeId).WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>().HasRequired(u => u.UserRole).WithMany(r => r.Users).HasForeignKey(a => a.UserRoleId).WillCascadeOnDelete(false);
-
-            /*modelBuilder.Entity<User>().HasMany(y => y.MyTests).WithMany(p => p.Participants).Map(m =>
-            {
-                m.MapLeftKey("UserId");
-                m.MapRightKey("TestId");
-                m.ToTable("UsersInTest");
-            });*/
 
             modelBuilder.Entity<Test>().HasRequired(ct => ct.Owner).WithMany(r => r.CreatedTests).HasForeignKey(t => t.OwnerId).WillCascadeOnDelete(false);
 

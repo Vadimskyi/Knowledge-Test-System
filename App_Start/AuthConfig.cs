@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using System.Configuration;
-using JumpStartTest.Helpers;
+using TestApplication.Helpers;
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public static class AuthConfig
     {

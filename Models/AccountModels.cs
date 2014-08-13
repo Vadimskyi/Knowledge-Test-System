@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using System.Web.Security;
 
-namespace JumpStartTest
+namespace TestApplication
 {
 
     public class RegisterExternalLoginModel

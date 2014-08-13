@@ -1,28 +1,20 @@
-﻿using DotNetOpenAuth.AspNet;
-using Microsoft.Web.WebPages.OAuth;
-using JumpStartTest.Filters;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Principal;
-using System.Web.Helpers;
 using System.Web.Http;
-using System.Web.Security;
-using System.Threading;
-using WebMatrix.WebData;
+using TestApplication.Filters;
+using TestApplication.Helpers;
 
-using System.Transactions;
-using System.Web;
-using JumpStartTest.Helpers;
-
-namespace JumpStartTest.Controllers
+namespace TestApplication.Controllers
 {
     [ModelValidation]
     public class TestController : ApiController
     {
-        EFDbContext _db = new EFDbContext();
+        private readonly EFDbContext _db;
+
+        public TestController(EFDbContext context)
+        {
+            _db = context;
+        }
 
         [HttpPost]
         [HttpOptions]
@@ -31,7 +23,6 @@ namespace JumpStartTest.Controllers
             _db.TestRestrictions.Add(test.Restriction);
             _db.Tests.Add(test);
             _db.SaveChanges();
-            var test1 = test;
             return true;
         }
 
@@ -42,7 +33,7 @@ namespace JumpStartTest.Controllers
             if (test == null)
                 throw new ArgumentNullException();
 
-            Statistic s = new Statistic()
+            var s = new Statistic()
             {
                 TestId = test.TestId,
                 UserId = test.UserId,
@@ -51,9 +42,9 @@ namespace JumpStartTest.Controllers
             };
             _db.Statistics.Add(s);
             _db.SaveChanges();
-            Test tes = _db.Tests.Where(t => t.Id == test.TestId).First();
+            Test tes = _db.Tests.First(t => t.Id == test.TestId);
             tes.Statistics.Add(s);
-            User use = _db.Users.Where(u => u.Id == test.UserId).First();
+            User use = _db.Users.First(u => u.Id == test.UserId);
             use.Statistics.Add(s);
             _db.UsersInTests.Add(new UsersInTest
             {
@@ -69,18 +60,18 @@ namespace JumpStartTest.Controllers
         [HttpOptions]
         public int SubmitTest(SubmitedTest test)
         {
-            TestChecker tc = new TestChecker(_db);
+            var tc = new TestChecker(_db);
             int percent = tc.CheckTest(test);
             Statistic st = null;
 
             try
             {
-                st = _db.Statistics.Where(s => (s.TestId == test.Id && s.UserId == test.UserId)).First();
+                st = _db.Statistics.First(s => (s.TestId == test.Id && s.UserId == test.UserId));
             }
             catch (Exception ex) { return 0; }
 
             st.EndDate = DateTime.Now.ToShortDateString() + "  " + DateTime.Now.ToShortTimeString();
-            st.Progress = percent + "/" + _db.Questions.Where(q => q.TestId == test.Id).Count();
+            st.Progress = percent + "/" + _db.Questions.Count(q => q.TestId == test.Id);
             _db.SaveChanges();
             return percent;
         }

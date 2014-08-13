@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Web.Optimization;
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //BundleTable.EnableOptimizations = true;
             bundles.IgnoreList.Clear();
+
             AddDefaultIgnorePatterns(bundles.IgnoreList);
 
             bundles.Add(
@@ -64,6 +66,11 @@ namespace JumpStartTest
                 .Include("~/Content/app.css"));
         }
 
+        public static void ConfigDirectories(IgnoreList ignoreList)
+        {
+            
+        }
+
         public static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
         {
             if (ignoreList == null)
@@ -73,9 +80,9 @@ namespace JumpStartTest
 
             ignoreList.Ignore("*.intellisense.js");
             ignoreList.Ignore("*-vsdoc.js");
-            //ignoreList.Ignore("*.debug.js", OptimizationMode.WhenEnabled);
-            //ignoreList.Ignore("*.min.js", OptimizationMode.WhenDisabled);
-            //ignoreList.Ignore("*.min.css", OptimizationMode.WhenDisabled);
+           /* ignoreList.Ignore("*.debug.js", OptimizationMode.WhenEnabled);
+            ignoreList.Ignore("*.min.js", OptimizationMode.WhenDisabled);
+            ignoreList.Ignore("*.min.css", OptimizationMode.WhenDisabled);*/
         }
     }
 }

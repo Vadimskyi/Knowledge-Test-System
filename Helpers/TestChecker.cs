@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace JumpStartTest.Helpers
+namespace TestApplication.Helpers
 {
     public class TestChecker
     {
-        EFDbContext _db;
+        private EFDbContext _db;
+
         public TestChecker(EFDbContext db)
         {
             _db = db;
@@ -16,40 +15,38 @@ namespace JumpStartTest.Helpers
         public int CheckTest(SubmitedTest test)
         {
             int correctAnswers = 0;
-            foreach (var que in test.Questions)
+
+            foreach (var question in test.Questions)
             {
-                int key = _db.QuestionTypes.Where(n => n.Id == que.QuestionTypeId).Select(q => q.Key).FirstOrDefault();
+                int key = _db.QuestionTypes.Where(n => n.Id == question.QuestionTypeId).Select(q => q.Key).FirstOrDefault();
                 switch (key)
                 {
                     case 1: //один ответ из нескольких
                         {
-                            if (que.Answers == null)
-                                break;
-                            if (que.Answers.FirstOrDefault() == null)
+                            if (question.Answers == null || question.Answers.FirstOrDefault() == null)
                                 break;
 
-                            int answId = int.Parse(que.Answers.FirstOrDefault());
-                            if (_db.Answers.Where(a => a.Id == answId).First().IsCorrectAnswer)
+                            int answId;
+                            int.TryParse(question.Answers.FirstOrDefault(), out answId);
+                            if (_db.Answers.First(a => a.Id == answId).IsCorrectAnswer)
                                 correctAnswers++;
                         }
                         break;
                     case 2: //несколько ответов
                         {
-                            if (que.Answers == null)
-                                break;
-                            if (que.Answers.FirstOrDefault() == null)
+                            if (question.Answers == null || question.Answers.FirstOrDefault() == null)
                                 break;
 
                             bool isCorrect = true;
-                            IQueryable<Answer> answers = _db.Answers.Where(n => n.QuestionId == que.QuestionId);
-                            int answersCount = answers.Where(n => n.IsCorrectAnswer == true).Count();
+                            IQueryable<Answer> answers = _db.Answers.Where(n => n.QuestionId == question.QuestionId);
+                            int answersCount = answers.Count(n => n.IsCorrectAnswer);
 
                             int count = 0;
 
-                            foreach (string ans in que.Answers)
+                            foreach (string ans in question.Answers)
                             {
                                 int answId = int.Parse(ans);
-                                if (!answers.Where(a => a.Id == answId).First().IsCorrectAnswer)
+                                if (!answers.First(a => a.Id == answId).IsCorrectAnswer)
                                 {
                                     isCorrect = false;
                                 }
@@ -65,14 +62,15 @@ namespace JumpStartTest.Helpers
                         break;
                     case 3: //один ответ
                         {
-                            if (que.Answers == null)
+                            if (question.Answers == null)
                                 break;
-                            if (que.Answers.FirstOrDefault() == null)
+                            if (question.Answers.FirstOrDefault() == null)
                                 break;
 
-                            string answ = que.Answers.FirstOrDefault();
-                            IQueryable<Answer> answers = _db.Answers.Where(n => n.QuestionId == que.QuestionId);
-                            if (answ.ToUpper() == answers.FirstOrDefault().AnswerText.ToUpper())
+                            string submintedAnswer = question.Answers.FirstOrDefault();
+                            IQueryable<Answer> answers = _db.Answers.Where(n => n.QuestionId == question.QuestionId);
+                            var answer = answers.FirstOrDefault();
+                            if (answer != null && String.Equals(submintedAnswer, answer.AnswerText, StringComparison.CurrentCultureIgnoreCase))
                                 correctAnswers++;
                         }
                         break;

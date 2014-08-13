@@ -18,7 +18,7 @@
 using System.Web.Http.Dependencies;
 using StructureMap;
 
-namespace JumpStartTest.DependencyResolution
+namespace TestApplication.DependencyResolution
 {
     /// <summary>
     /// The structure map dependency resolver.

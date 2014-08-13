@@ -1,14 +1,14 @@
-﻿using JumpStartTest.Filters;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
+using TestApplication.Filters;
 using Thinktecture.IdentityModel.Http.Cors.WebApi;
 using Thinktecture.IdentityModel.Tokens.Http;
 using WebMatrix.WebData;
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class WebApiConfig
     {

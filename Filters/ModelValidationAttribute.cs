@@ -6,7 +6,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.ModelBinding;
 
-namespace JumpStartTest.Filters
+namespace TestApplication.Filters
 {
     public class ModelValidationAttribute : ActionFilterAttribute
     {

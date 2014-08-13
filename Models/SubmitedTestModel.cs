@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class StartTestObject
     {

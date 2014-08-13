@@ -18,11 +18,11 @@
 using System.Web.Http;
 using System.Web.Mvc;
 using StructureMap;
-using JumpStartTest.DependencyResolution;
+using TestApplication.DependencyResolution;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(JumpStartTest.App_Start.StructuremapMvc), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(TestApplication.App_Start.StructuremapMvc), "Start")]
 
-namespace JumpStartTest.App_Start {
+namespace TestApplication.App_Start {
     public static class StructuremapMvc {
         public static void Start() {
 			IContainer container = IoC.Initialize();

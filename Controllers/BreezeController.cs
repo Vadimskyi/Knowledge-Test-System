@@ -7,14 +7,13 @@ using System.Web.Http;
 using Breeze.WebApi;
 using Newtonsoft.Json.Linq;
 
-namespace JumpStartTest.Controllers
+namespace TestApplication.Controllers
 {
     [BreezeController]
     [AllowAnonymous]
     public class BreezeController : ApiController
     {
-        readonly EFContextProvider<EFDbContext> _contextProvider =
-            new EFContextProvider<EFDbContext>();
+        private readonly EFContextProvider<EFDbContext> _contextProvider =  new EFContextProvider<EFDbContext>();
 
         [HttpGet]
         public string Metadata()
@@ -25,10 +24,10 @@ namespace JumpStartTest.Controllers
         [HttpPost]
         public SaveResult SaveChanges(JObject saveBundle)
         {
-            EntityError error = new EntityError();
+            var error = new EntityError();
             error.ErrorMessage = "success";
-            List<EntityError> entityErrors = new List<EntityError>() { error };
-            SaveResult sr = new SaveResult() { Errors = entityErrors.Cast<object>().ToList() };
+            var entityErrors = new List<EntityError>() { error };
+            var sr = new SaveResult() { Errors = entityErrors.Cast<object>().ToList() };
             return sr;
         }
 

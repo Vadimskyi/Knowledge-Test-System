@@ -22,7 +22,7 @@ using System.Web.Http.Dependencies;
 using Microsoft.Practices.ServiceLocation;
 using StructureMap;
 
-namespace JumpStartTest.DependencyResolution
+namespace TestApplication.DependencyResolution
 {
     /// <summary>
     /// The structure map dependency scope.

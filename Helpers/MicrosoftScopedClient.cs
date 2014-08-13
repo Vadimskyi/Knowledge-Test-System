@@ -10,7 +10,7 @@ using System.Web;
 using System.Linq;
 using DotNetOpenAuth.AspNet.Clients;
 
-namespace JumpStartTest.Helpers
+namespace TestApplication.Helpers
 {
     public class MicrosoftScopedClient : IAuthenticationClient
     {

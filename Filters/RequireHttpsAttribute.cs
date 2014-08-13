@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace JumpStartTest.Filters
+namespace TestApplication.Filters
 {
     public class RequireHttpsAttribute : AuthorizationFilterAttribute
     {

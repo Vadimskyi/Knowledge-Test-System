@@ -2,31 +2,31 @@
 using Microsoft.Web.WebPages.OAuth;
 using System.IO;
 using System.Diagnostics;
-using JumpStartTest.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Principal;
-using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Security;
 using System.Threading;
 using System.Threading.Tasks;
+using TestApplication.Filters;
 using WebMatrix.WebData;
-
-using System.Transactions;
 using System.Web;
-using Newtonsoft.Json.Linq;
-using System.Text;
 
-namespace JumpStartTest.Controllers
+namespace TestApplication.Controllers
 {
     [ModelValidation]
     public class AccountController : ApiController
     {
-        EFDbContext _db = new EFDbContext();
+        private readonly EFDbContext _db;
+
+        public AccountController(EFDbContext context)
+        {
+            _db = context;
+        }
 
         [HttpPost]
         [HttpOptions]
@@ -80,7 +80,7 @@ namespace JumpStartTest.Controllers
         {
             try
             {
-                User user = new JumpStartTest.User()
+                User user = new User()
                 {
                     Login = model.UserName,
                     FirstName = model.FirstName,

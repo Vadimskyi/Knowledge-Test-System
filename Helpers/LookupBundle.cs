@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JumpStartTest.Helpers
+namespace TestApplication.Helpers
 {
     public class LookupBundle
     {

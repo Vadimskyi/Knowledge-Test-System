@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace JumpStartTest
+﻿
+namespace TestApplication
 {
     public class Statistic
     {

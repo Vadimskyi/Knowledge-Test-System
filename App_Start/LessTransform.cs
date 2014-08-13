@@ -1,6 +1,6 @@
 using System.Web.Optimization;
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class LessTransform : IBundleTransform
     {

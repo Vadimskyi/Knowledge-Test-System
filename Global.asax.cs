@@ -6,7 +6,7 @@ using System.Web.Routing;
 using WebMatrix.WebData;
 
 
-namespace JumpStartTest
+namespace TestApplication
 {
     public class Global : System.Web.HttpApplication
     {
@@ -25,6 +25,9 @@ namespace JumpStartTest
             {
                 WebSecurity.InitializeDatabaseConnection("TestAppDb", "User", "Id", "Login", autoCreateTables: true);
             }
+
+
+            Bootstrapper.Initialise();
         }
     }
 }
